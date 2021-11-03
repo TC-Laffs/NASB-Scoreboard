@@ -8,7 +8,8 @@ import os
 from os import listdir
 from os.path import isfile, join
 import sys
-
+from pathlib import Path
+dirname = os.path.dirname(__file__)
 
 
 if sys.version_info[0] < 3:
@@ -18,22 +19,22 @@ else:
 x = 0
 def p1CharChange(pics,bigpic):
     im1 = "hi"
-    im1 = PIL.Image.open(os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Characters",bigpic))
-    im1 = im1.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P1Char.png")
+    im1 = PIL.Image.open(os.path.join("characters",bigpic))
+    im1 = im1.save(os.path.join(dirname, "P1Char.png"))
 def p2CharChange(pics,bigpic):
     im2 = "hi"
-    im2 = PIL.Image.open(os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Characters",bigpic))
-    im2 = im2.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P2Char.png")
+    im2 = PIL.Image.open(os.path.join(os.path.join(dirname, "Characters",bigpic)))
+    im2 = im2.save(os.path.join(dirname, "P2Char.png"))
 
 def p1SetTag(tag):
     tag = str(tag)
-    text_file = open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\p1Tag.txt", "wt")
+    text_file = open(os.path.join(dirname, "p1Tag.txt"), "wt")
     n = text_file.write(tag)
     text_file.close()
 
 def p2SetTag(tag):
     tag = str(tag)
-    text_file = open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\p2Tag.txt", "wt")
+    text_file = open(os.path.join(dirname, "p2Tag.txt"), "wt")
     n = text_file.write(tag)
     text_file.close()
 
@@ -46,18 +47,18 @@ def p2SetTag(tag):
 #        fullscreen = True
 #    return fullscreen
 
-bigPicFiles = [f for f in listdir(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Characters") if isfile(join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Characters", f))]
+bigPicFiles = [f for f in listdir(os.path.join(dirname, "Characters")) if isfile(join(os.path.join(dirname, "Characters", f)))]
 bigPics = []
 for x in range (0, len(bigPicFiles)):
-    bigTemp = open(os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Characters", bigPicFiles[x]), "rb")
+    bigTemp = open(os.path.join(os.path.join(dirname, "Characters", bigPicFiles[x])), "rb")
     bigPic = PIL.Image.open(bigTemp)
     bigPics.append(bigPic)
 
 
-smolPicFiles = [f for f in listdir(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars") if isfile(join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Characters", f))]
+smolPicFiles = [f for f in listdir(os.path.join(dirname, "Small Chars")) if isfile(join(os.path.join(dirname, "Characters", f)))]
 smolPics = []
 for x in range (0, len(smolPicFiles)):
-    smolTemp = open(os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[x]), "rb")
+    smolTemp = open(os.path.join(os.path.join(dirname, "Small Chars"), smolPicFiles[x]), "rb")
     smolPic = PIL.Image.open(smolTemp)
     smolPics.append(smolPic)
 
@@ -89,45 +90,45 @@ def onClick(event=None):
 window.geometry('1920x1080')
 window.title("Laffs/Gaffs's NASB Stream Tool")
 #other images
-window.tagImg = PhotoImage(file = r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Tag.png")
-window.Rand = PhotoImage(file = r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\random.png")
-window.Yes = PhotoImage(file = r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\yes.png")
-window.Divider = PhotoImage(file = r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\divider.png")
-window.Fullscreen = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\fullscreen.png")
-window.setLabel = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Set.png")
-window.win0 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 0.png")
-window.win1 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 1.png")
-window.win2 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 2.png")
-window.win3 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 3.png")
-window.win4 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 4.png")
-window.win5 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 5.png")
-window.null1 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\null 1.png")
-window.null2 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\null 2.png")
-window.null3 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\null 3.png")
-window.null4 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\null 4.png")
-window.null5 = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\null 5.png")
-window.Plus = PhotoImage(file= r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\plus.png")
+window.tagImg = PhotoImage(file = os.path.join(dirname, "Tag.png"))
+window.Rand = PhotoImage(file = os.path.join(dirname, "random.png"))
+window.Yes = PhotoImage(file = os.path.join(dirname, "yes.png"))
+window.Divider = PhotoImage(file = os.path.join(dirname, "divider.png"))
+window.Fullscreen = PhotoImage(file= os.path.join(dirname, "fullscreen.png"))
+window.setLabel = PhotoImage(file= os.path.join(dirname, "Set.png"))
+window.win0 = PhotoImage(file= os.path.join(dirname, "scores\win 0.png"))
+window.win1 = PhotoImage(file= os.path.join(dirname, "scores\win 1.png"))
+window.win2 = PhotoImage(file= os.path.join(dirname, "scores\win 2.png"))
+window.win3 = PhotoImage(file= os.path.join(dirname, "scores\win 3.png"))
+window.win4 = PhotoImage(file= os.path.join(dirname, "scores\win 4.png"))
+window.win5 = PhotoImage(file= os.path.join(dirname, "scores\win 5.png"))
+window.null1 = PhotoImage(file= os.path.join(dirname, r"scores\null 1.png"))
+window.null2 = PhotoImage(file= os.path.join(dirname, r"scores\null 2.png"))
+window.null3 = PhotoImage(file= os.path.join(dirname, r"scores\null 3.png"))
+window.null4 = PhotoImage(file= os.path.join(dirname, r"scores\null 4.png"))
+window.null5 = PhotoImage(file= os.path.join(dirname, r"scores\null 5.png"))
+window.Plus = PhotoImage(file= os.path.join(dirname, "plus.png"))
 #characters
-window.Zim = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[0]))
-window.Spongebob = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[1]))
-window.Korra = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[2]))
-window.CatDog = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[3]))
-window.Toph = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[4]))
-window.Sandy = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[5]))
-window.RenStimpy = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[6]))
-window.Lucy = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[7]))
-window.PTM = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[8]))
-window.Aang = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[9]))
-window.Reptar = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[10]))
-window.Leonardo = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[11]))
-window.Nigel = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[12]))
-window.Michaelangelo = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[13]))
-window.Danny = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[14]))
-window.Lincoln = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[15]))
-window.April = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[16]))
-window.Helga = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[17]))
-window.Oblina = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[18]))
-window.Patrick = PhotoImage(file = os.path.join(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\Small Chars", smolPicFiles[19]))
+window.Zim = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[0])))
+window.Spongebob = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[1])))
+window.Korra = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[2])))
+window.CatDog = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[3])))
+window.Toph = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[4])))
+window.Sandy = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[5])))
+window.RenStimpy = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[6])))
+window.Lucy = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[7])))
+window.PTM = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[8])))
+window.Aang = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[9])))
+window.Reptar = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[10])))
+window.Leonardo = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[11])))
+window.Nigel = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[12])))
+window.Michaelangelo = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[13])))
+window.Danny = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[14])))
+window.Lincoln = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[15])))
+window.April = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[16])))
+window.Helga = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[17])))
+window.Oblina = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[18])))
+window.Patrick = PhotoImage(file = os.path.join(os.path.join(dirname, "Small Chars", smolPicFiles[19])))
 #widgets
 #fullscreen button
 
@@ -148,33 +149,33 @@ def onClick3(event=None):
    if intscoretwo % 6 == 1:
       p2win1.place(x=1415,y=880)
       im4 = "hi"
-      im4 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 1.png")
-      im4 = im4.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P2Score.png")
+      im4 = PIL.Image.open(os.path.join(dirname, "scores\win 1.png"))
+      im4 = im4.save(os.path.join(dirname, "P2Score.png"))
    if intscoretwo % 6 == 2:
       p2win2.place(x=1475,y=880)
       im4 = "hi"
-      im4 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 2.png")
-      im4 = im4.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P2Score.png")
+      im4 = PIL.Image.open(os.path.join(dirname, "scores\win 2.png"))
+      im4 = im4.save(os.path.join(dirname, "P2Score.png"))
    if intscoretwo % 6 == 3:
       p2win3.place(x=1535,y=880)
       im4 = "hi"
-      im4 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 3.png")
-      im4 = im4.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P2Score.png")
+      im4 = PIL.Image.open(os.path.join(dirname, "scores\win 3.png"))
+      im4 = im4.save(os.path.join(dirname, "P2Score.png"))
    if intscoretwo % 6 == 4:
       p2win4.place(x=1595,y=880)
       im4 = "hi"
-      im4 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 4.png")
-      im4 = im4.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P2Score.png")
+      im4 = PIL.Image.open(os.path.join(dirname, "scores\win 4.png"))
+      im4 = im4.save(os.path.join(dirname, "P2Score.png"))
    if intscoretwo % 6 == 5:
       p2win5.place(x=1655,y=880)
       im4 = "hi"
-      im4 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 5.png")
-      im4 = im4.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P2Score.png")
+      im4 = PIL.Image.open(os.path.join(dirname, "scores\win 5.png"))
+      im4 = im4.save(os.path.join(dirname, "P2Score.png"))
    if intscoretwo % 6 == 0:
       #p1win5.place(x=700,y=880)
       im4 = "hi"
-      im4 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 0.png")
-      im4 = im4.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P2Score.png")
+      im4 = PIL.Image.open(os.path.join(dirname, "scores\win 0.png"))
+      im4 = im4.save(os.path.join(dirname, "P2Score.png"))
 
 def onClick2(event=None):
    window.scoreone.set(window.scoreone.get()+1)
@@ -183,33 +184,33 @@ def onClick2(event=None):
    if intscoreone % 6 == 1:
       p1win1.place(x=460,y=880)
       im3 = "hi"
-      im3 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 1.png")
-      im3 = im3.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P1Score.png")
+      im3 = PIL.Image.open(os.path.join(dirname, "scores\win 1.png"))
+      im3 = im3.save(os.path.join(dirname, "P1Score.png"))
    if intscoreone % 6 == 2:
       p1win2.place(x=520,y=880)
       im3 = "hi"
-      im3 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 2.png")
-      im3 = im3.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P1Score.png")
+      im3 = PIL.Image.open(os.path.join(dirname, "scores\win 2.png"))
+      im3 = im3.save(os.path.join(dirname, "P1Score.png"))
    if intscoreone % 6 == 3:
       p1win3.place(x=580,y=880)
       im3 = "hi"
-      im3 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 3.png")
-      im3 = im3.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P1Score.png")
+      im3 = PIL.Image.open(os.path.join(dirname, "scores\win 3.png"))
+      im3 = im3.save(os.path.join(dirname, "P1Score.png"))
    if intscoreone % 6 == 4:
       p1win4.place(x=640,y=880)
       im3 = "hi"
-      im3 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 4.png")
-      im3 = im3.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P1Score.png")
+      im3 = PIL.Image.open(os.path.join(dirname, "scores\win 4.png"))
+      im3 = im3.save(os.path.join(dirname, "P1Score.png"))
    if intscoreone % 6 == 5:
       p1win5.place(x=700,y=880)
       im3 = "hi"
-      im3 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 5.png")
-      im3 = im3.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P1Score.png")
+      im3 = PIL.Image.open(os.path.join(dirname, "scores\win 5.png"))
+      im3 = im3.save(os.path.join(dirname, "P1Score.png"))
    if intscoreone % 6 == 0:
       #p1win5.place(x=700,y=880)
       im3 = "hi"
-      im3 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 0.png")
-      im3 = im3.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P1Score.png")
+      im3 = PIL.Image.open(os.path.join(dirname, "scores\win 0.png"))
+      im3 = im3.save(os.path.join(dirname, "P1Score.png"))
 #if intscoreone == 6:
     #  p1win1.destroy()
      # p1win2.destroy()
@@ -219,12 +220,12 @@ def onClick2(event=None):
       #window.scoreone.set(window.scoreone.get()-6)
       
 im3 = "hi"
-im3 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 0.png")
-im3 = im3.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P1Score.png")
+im3 = PIL.Image.open(os.path.join(dirname, "scores\win 0.png"))
+im3 = im3.save(os.path.join(dirname, "P1Score.png"))
 
 im4 = "hi"
-im4 = PIL.Image.open(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\scores\win 0.png")
-im4 = im4.save(r"C:\Users\ZachA\Desktop\Brawl Stars Scoreboard Utility Thing\P2Score.png")   
+im4 = PIL.Image.open(os.path.join(dirname, "scores\win 0.png"))
+im4 = im4.save(os.path.join(dirname, "P2Score.png"))   
 setLabel1 = tkinter.Label(image= window.setLabel,borderwidth = 0)
 setLabel1.place(x=100,y=860)
 setLabel2 = tkinter.Label(image= window.setLabel,borderwidth = 0)
